@@ -14,14 +14,12 @@ function game(){
         if (playerSelection === 'ROCK' && computerSelection === 'SCISSORS' || 
             playerSelection === 'PAPER' && computerSelection === 'ROCK' || 
             playerSelection === 'SCISSORS' && computerSelection === 'PAPER'){
-                playerScore += 1;
                 alert(`${playerSelection} BEATS ${computerSelection}! POINT FOR PLAYER!`);
         
     
         } else if (playerSelection === 'SCISSORS' && computerSelection === 'ROCK' || 
             playerSelection === 'ROCK' && computerSelection === 'PAPER' || 
             playerSelection === 'PAPER' && computerSelection === 'SCISSORS'){
-                computerScore += 1;
                 alert(`${computerSelection} BEATS ${playerSelection}! POINT FOR COMPUTER!`);
        
         } else if (playerSelection === computerSelection){
@@ -30,6 +28,7 @@ function game(){
 
         return;
         }
+        console.log(playRound(playerSelection,computerSelection));
     }
 }
 console.log(game());

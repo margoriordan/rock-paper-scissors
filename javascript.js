@@ -1,34 +1,42 @@
-function game(){
-    for (let i = 0; i < 5; i++){
+let playerCount = document.querySelector(".player-count");
+let computerCount = document.querySelector(".computer-count");
 
-    let computerChoice = ['ROCK', 'PAPER', 'SCISSORS'];
-        let getComputerChoice = computerChoice[Math.floor(Math.random() * computerChoice.length)];
-    let computerSelection = getComputerChoice;
-        console.log(computerSelection);
+function computerPlay(){
+    let choices = ["ROCK","PAPER","SCISSORS"];
+    return choices[Math.floor(Math.random() * choices.length)];
+};
 
-    let getPlayerSelection = prompt('ROCK, PAPER, OR SCISSORS?');
-    let playerSelection = getPlayerSelection.toUpperCase();
+const buttons = document.querySelectorAll("input");
+buttons.forEach(button => {
+    button.addEventListener("click", function(){
+        playRound(button.value);
+    })
+});
 
-    function playRound(playerSelection, computerSelection){
+let playerScore = 0;
+let computerScore = 0;
+
+function playRound(playerSelection){
     
-        if (playerSelection === 'ROCK' && computerSelection === 'SCISSORS' || 
-            playerSelection === 'PAPER' && computerSelection === 'ROCK' || 
-            playerSelection === 'SCISSORS' && computerSelection === 'PAPER'){
-                alert(`${playerSelection} BEATS ${computerSelection}! POINT FOR PLAYER!`);
-        
+    let computerSelection = computerPlay();
     
-        } else if (playerSelection === 'SCISSORS' && computerSelection === 'ROCK' || 
+    if (playerSelection === 'ROCK' && computerSelection === 'SCISSORS' || 
+        playerSelection === 'PAPER' && computerSelection === 'ROCK' || 
+        playerSelection === 'SCISSORS' && computerSelection === 'PAPER'){
+            playerCount.textContent = ++playerScore;
+            alert(`${playerSelection} BEATS ${computerSelection}!`);
+            alert("CHEATER.")
+    
+
+    } else if (playerSelection === 'SCISSORS' && computerSelection === 'ROCK' || 
             playerSelection === 'ROCK' && computerSelection === 'PAPER' || 
             playerSelection === 'PAPER' && computerSelection === 'SCISSORS'){
-                alert(`${computerSelection} BEATS ${playerSelection}! POINT FOR COMPUTER!`);
-       
-        } else if (playerSelection === computerSelection){
-            alert(`DRAW.`)
-        } 
-
-        return;
-        }
-        console.log(playRound(playerSelection,computerSelection));
-    }
-}
-console.log(game());
+            computerCount.textContent = ++computerScore;
+            alert("HA!");
+            alert(`${computerSelection} BEATS ${playerSelection}!`);
+            alert("LOSER.")
+   
+    } else if (playerSelection === computerSelection){
+        alert("A tie?...that's unproductive...");
+    }   
+};

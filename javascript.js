@@ -1,5 +1,6 @@
 let playerCount = document.querySelector(".player-count");
 let computerCount = document.querySelector(".computer-count");
+let gameResult = document.querySelector(".victor");
 
 function computerPlay(){
     let choices = ["ROCK","PAPER","SCISSORS"];
@@ -18,6 +19,7 @@ let computerScore = 0;
 
 function playRound(playerSelection){
     
+    
     let computerSelection = computerPlay();
     
     if (playerSelection === 'ROCK' && computerSelection === 'SCISSORS' || 
@@ -32,12 +34,11 @@ function playRound(playerSelection){
             playerSelection === 'ROCK' && computerSelection === 'PAPER' || 
             playerSelection === 'PAPER' && computerSelection === 'SCISSORS'){
             computerCount.textContent = ++computerScore;
-            alert("HA!");
+            alert("HA! LOSER.");
             alert(`${computerSelection} BEATS ${playerSelection}!`);
-            alert("LOSER.")
    
     } else if (playerSelection === computerSelection){
-        alert("A tie?...that's unproductive...");
+        alert("A TIE! HOW UNPRODUCTIVE.");
     };
 
     checkWinner();

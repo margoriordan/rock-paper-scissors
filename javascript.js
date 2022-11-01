@@ -24,7 +24,7 @@ function playRound(playerSelection){
         playerSelection === 'PAPER' && computerSelection === 'ROCK' || 
         playerSelection === 'SCISSORS' && computerSelection === 'PAPER'){
             playerCount.textContent = ++playerScore;
-            alert(`${playerSelection} BEATS ${computerSelection}!`);
+            alert(`${playerSelection} BEATS ${computerSelection}...?`);
             alert("CHEATER.")
     
 
@@ -38,5 +38,19 @@ function playRound(playerSelection){
    
     } else if (playerSelection === computerSelection){
         alert("A tie?...that's unproductive...");
-    }   
-};
+    };
+
+    checkWinner();
+}
+
+function checkWinner(){
+    if (playerScore === 5 && playerScore > computerScore){
+        alert("I DEMAND A RECOUNT!!!!!");
+        location.reload();
+    }
+    else if (computerScore === 5 && computerScore > playerScore){
+        alert("JUST AS I THOUGHT IT WOULD BE...");
+        alert("PLAY AGAIN IF YOU'RE A MASOCHIST.")
+        location.reload();
+    }
+}
